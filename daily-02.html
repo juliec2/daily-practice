@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body onmousemove="initEvent()">
+<div style="width: 500px; margin-left: 200px;">
+    <div id="question" style="border: 1px solid yellow;">
+        <input id="Text1" type="text" /><input id="btnAddInput" type="button" value="新增一个Input" onclick="AddInput()" /><br />
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    var count = 1;
+
+    //用来判断是删除 还是增加按钮 以便count值进行计算
+    function checkCount(boolOK, coun) {
+       if (boolOK == true) {
+            return count++;
+        }
+       else {
+        count--;
+     }
+    }
+    //添加一个input标签 同时也对它的ID和Name进行赋值。
+    function AddInput() {
+    countAA = checkCount(true, count);
+       var question = document.getElementById("question");
+      //创建input
+        var input = document.createElement("input");
+        input.type = "text";
+        input.id = "questions[" + count + "]";
+        input.name = "questions[" + count + "].name";
+        question.appendChild(input);                                     //向元素增加子节点 最为最后一个子节点
+
+
+        var input = document.createElement("input");
+        input.type = "button";
+        input.id = "questions[" + count + "]";
+        input.name = "questions[" + count + "].name";
+        input.value="按钮";
+
+        question.appendChild(input);
+
+        //创建一个空格
+        var br = document.createElement("br");
+        question.appendChild(br);
+    }
+
+</script>
+</html>
+
+
